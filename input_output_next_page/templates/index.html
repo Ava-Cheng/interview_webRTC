@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="image" content="../static/images/webrtc-icon-192x192.png">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>Select audio and video sources</title>
+
+    <link rel="icon" sizes="192x192" href="../static/images/webrtc-icon-192x192.png">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link href="../static/css/video-js.min.css" rel="stylesheet">
+    <link href="../static/css/videojs.record.css" rel="stylesheet">
+  
+    <script src="../static/js/video.min.js"></script>
+    <script src="../static/js/RecordRTC.js"></script>
+    <script src="../static/js/adapter.js"></script>
+  
+    <script src="../static/js/videojs.record.js"></script>
+    <style>
+        div.select {
+            display: inline-block;
+            margin: 0 0 1em 0;
+        }
+
+        p.small {
+            font-size: 0.7em;
+        }
+
+        label {
+            width: 12em;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="container">
+    <div class="select">
+        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+    </div>
+
+    <div class="select">
+        <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+    </div>
+
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+
+    <video id="Video" class="video-js vjs-default-skin" autoplay playsinline></video>
+
+    <form action="next2.html"  method="get" id="frm01" target="_blank">
+        <input  type = "hidden" name="videoValue" id="videoValue">
+        <input  type="hidden" name="videoValue" id="audioValue" >
+        <input type="submit" value="設備確認" onclick="getDeviceID()">
+    </form>
+
+</div>
+<script>
+    function getDeviceID() {
+        var videoValue = (document.querySelector('select#videoSource')).value;
+        var audioValue = (document.querySelector('select#audioSource')).value;
+        console.log(videoValue);
+        document.getElementById("videoValue").value = videoValue;
+        document.getElementById("audioValue").value = audioValue;
+    }
+</script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="../static/js/main.js" async></script>
+
+<script src="../static/js/ga.js"></script>
+</body>
+</html>
